@@ -23,9 +23,6 @@
             $('#table-div').show()
         }
 
-        function hideAll() {
-            $('#table-div').hide()
-        }
     </script>
     <style>
         h1
@@ -60,7 +57,7 @@
     </style>
 </head>
 
-<body onload="hideAll()">
+<body>
     <div id="table-div" hidden>
         <table id="user_table" border="2px">
             <caption>User Table</caption>
@@ -116,7 +113,6 @@
         for (x in users) {
             if (users[x].email == email)
                 return false
-            console.log(users[x])
         }
         return true
     }
