@@ -71,7 +71,7 @@
             <th>Email</th>
         </table>
     </div>
-    <button onclick="showForm()" value="add user">add user</button>
+    <button onclick="showForm()" value="add user" id="addUser">add user</button>
     <div id="form-div" hidden>
 
         <div class="anuj">
@@ -80,7 +80,7 @@
                 <h1>User Registration Form</h1>
                 </header>
             </div>
-            <form>
+            <form id="userForm">
                 <label for="fname">First Name<br></label>
                 <input type="text" placeholder="Enter Firstname" id="firstName" name="fname" required><br><br>
                 <label for="mname">Middle Name<br></label>
@@ -101,6 +101,7 @@
                     <input type="radio" name="gender" class="gender" value="other"> Other: </label><br> <br>
                 <!-- <button type="submit">Login<br></button>  -->
                 <button type="button" onclick="addUser()">Submit!</button>
+                <button type="button" onclick="cancel()">Cancel</button>
         </div>
         </form>
     </div>
@@ -109,6 +110,7 @@
     function showForm() {
         $("#form-div").show()
         $("#table-div").hide()
+        $("#addUser").hide()
     }
     function emailChecker(email) {
         for (x in users) {
@@ -152,6 +154,7 @@
                 // console.log(users)
                 addUserToTable(user)
                 $("#form-div").hide()
+                $("#addUser").show()
                 // userTable()
 
             }
@@ -167,6 +170,14 @@
     function emailValidator(email) {
         var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         return regex.test(email)
+    }
+
+    function cancel(){
+        $("#userForm").trigger('reset')
+        $("#form-div").hide()
+        $("#addUser").show()
+        if(users.length)
+            $("#table-div").show()
     }
 
 </script>
